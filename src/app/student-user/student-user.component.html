@@ -1,0 +1,33 @@
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <h3 class="ui header"> 浙江省软考报名登录系统</h3>
+    <div class="form-group">
+      <label for="usernameInput">Username:</label>
+      <div *ngIf="!loginForm.valid" class="alert alert-danger">
+        <strong>Error！</strong>Form is invalid
+      </div>
+      <input type="text" class="form-control" 
+      [ngClass]="{'is-invalid' :username.hasError('required')}"
+      id="usernameInput" placeholder="input user name " name="username"
+        [formControl]="username">
+    </div>
+    <div class="form-group">
+      <label for="passwordInput">Password:</label>
+      <div *ngIf="password.hasError('required')" class="alert alert-danger">
+        <strong>Error！</strong>The password required
+      </div>
+      <input type="password" class="form-control"
+      [ngClass]="{'is-invalid' :password.hasError('required')}"
+      id="passwordInput" placeholder="input user password"
+        name="password" [formControl]="password">
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox"> Remember me
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+
+</div>
